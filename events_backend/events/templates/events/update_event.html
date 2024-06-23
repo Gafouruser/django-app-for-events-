@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier un événement</title>
+</head>
+<body>
+    <h1>Modifier l'événement "{{ event.title }}"</h1>
+    <form action="{% url 'events:update_event' event.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+</body>
+</html>
+
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier un événement</title>
+</head>
+<body>
+    <h1>Modifier l'événement "{{ event.title }}"</h1>
+    <form action="{% url 'events:update_event' event.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">Titre:</label>
+        <input type="text" name="title" id="title" value="{{ event.title }}"><br><br>
+        <label for="description">Description:</label>
+        <textarea name="description" id="description">{{ event.description }}</textarea><br><br>
+        <label for="date">Date:</label>
+        <input type="text" name="date" id="date" value="{{ event.date }}"><br><br>
+        <label for="time">Heure:</label>
+        <input type="time" name="time" id="time" value="{{ event.time }}"><br><br>
+        <label for="location">Lieu:</label>
+        <input type="text" name="location" id="location" value="{{ event.location }}"><br><br>
+        <label for="capacity">capacité:</label>
+        <input type="number" name="capacity" id="capacity" value="{{ event.capacity }}"><br><br>
+        <label for="available_seats">Places disponibles:</label>
+        <input type="number" name="available_seats" id="available_seats" value="{{ event.available_seats }}"><br><br>
+        <label for="creator">Créateur:</label>
+        <input type="text" name="creator" id="creator" value="{{ event.creator.username }}"><br><br>
+        <label for="attendees">Participant:</label>
+        <input type="text" name="attendees" id="attendees" value="{% for attendee in event.attendees.all %}{{ attendee.username }}{% if not forloop.last %}, {% endif %}{% endfor %}" readonly><br><br>
+        <label for="image">Image:</label>
+        <input type="file" name="image" id="image">
+        {% if event.image %}
+            <input type="hidden" name="current_image" value="{{ event.image.url }}">
+            <br><img src="{{ event.image.url }}" alt="{{ event.title }}" style="max-width: 300px;">
+        {% endif %}
+        <br><br>
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+</body>
+</html>
+-->

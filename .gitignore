@@ -1,0 +1,5 @@
+/.idea
+/env
+/events_backend/media
+db.sqlite3
+

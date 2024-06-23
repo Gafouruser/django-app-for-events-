@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription à l'événement</title>
+</head>
+<body>
+    <h1>Inscription à l'événement</h1>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="{% url 'events:register_event' event.id %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="event_id" value="{{ event.id }}">
+        <button type="submit">S'inscrire à l'événement</button>
+    </form>
+</body>
+</html>
